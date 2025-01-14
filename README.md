@@ -27,61 +27,98 @@ The dataset is publically available on the Kaggle website, and it is from an ong
   </caption>
   <thead>
     <tr>
-      <th scope="col">male</th>
-      <th scope="col">age</th>
-      <th scope="col">education</th>
-      <th scope="col">currentSmoker</th>
-      <th scope="col">cigsPerDay</th>
-      <th scope="col">BPMeds</th>
-      <th scope="col">prevalentStroke</th>
-      <th scope="col">prevalentHyp</th>
-      <th scope="col">diabetes</th>
-      <th scope="col">totChol</th>
-      <th scope="col">sysBP</th>
-      <th scope="col">diaBP</th>
-      <th scope="col">BMI</th>
-      <th scope="col">heartRate</th>
-      <th scope="col">glucose</th>
-      <th scope="col">TenYearCHD</th>
+      <th scope="col">Category</th>
+      <th scope="col">Description</th>
+      <th scope="col">Data Type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>male or female</td>
-      <td>Age of the patient</td>
-      <td>0: Less than High School and High School degrees, 1: College Degree and Higher</td>
-      <td>whether or not the patient is a current smoker</td>
-      <td>the number of cigarettes that the person smoked on average in one day</td>
-      <td>whether or not the patient was on blood pressure medication </td>
-      <td>whether or not the patient had previously had a stroke</td>
-      <td>whether or not the patient was hypertensive</td>
-      <td>whether or not the patient had diabetes</td>
-      <td>total cholesterol level</td>
-      <td>systolic blood pressure</td>
-      <td>diastolic blood pressure</td>
-      <td>Body Mass Index</td>
-      <td>In medical research, variables such as heart rate though in fact discrete, yet are considered continuous because of large number of possible values</td>
-      <td>glucose level</td>
-      <td>“1”-Yes, “0”-No</td>
+      <td>Male</td>
+      <td>Male or female</td>
+      <td>Binary</td>
     </tr>
     <tr>
-        <td>Binary</td>
-        <td>Continous</td>
-        <td>Binary</td>
-        <td>Binary</td>
-        <td>Continous</td>
-        <td>Binary</td>
-        <td>Binary</td>
-        <td>Binary</td>
-        <td>Binary</td>
-        <td>Continous</td>
-        <td>Continous</td>
-        <td>Continous</td>
-        <td>Continous</td>
-        <td>Continous</td>
-        <td>Continous</td>
-        <td>Binary</td>
+      <td>Age</td>
+      <td>Age of the patient</td>
+      <td>Continuous</td>
     </tr>
+    <tr>
+      <td>Education</td>
+      <td>0: Less than High School and High School degrees, 1: College Degree and Higher</td>
+      <td>Binary</td>
+    </tr>
+    <tr>
+      <td>Current Smoker</td>
+      <td>Whether or not the patient is a current smoker</td>
+      <td>Binary</td>
+    </tr>
+    <tr>
+      <td>Cigarettes Per Day</td>
+      <td>The number of cigarettes that the person smoked on average in one day</td>
+      <td>Continuous</td>
+    </tr>
+    <tr>
+      <td>Blood Pressure Medications</td>
+      <td>Whether or not the patient was on blood pressure medication</td>
+      <td>Binary</td>
+    </tr>
+    <tr>
+      <td>Prevalent Stroke</td>
+      <td>Whether or not the patient had previously had a stroke</td>
+      <td>Binary</td>
+    </tr>
+    <tr>
+      <td>Prevalent Hypertension</td>
+      <td>Whether or not the patient was hypertensive</td>
+      <td>Binary</td>
+    </tr>
+    <tr>
+      <td>Diabetes</td>
+      <td>Whether or not the patient had diabetes</td>
+      <td>Binary</td>
+    </tr>
+    <tr>
+      <td>Total Cholesterol</td>
+      <td>Total cholesterol level</td>
+      <td>Continuous</td>
+    </tr>
+    <tr>
+      <td>Systolic Blood Pressure</td>
+      <td>Systolic blood pressure</td>
+      <td>Continuous</td>
+    </tr>
+    <tr>
+      <td>Diastolic Blood Pressure</td>
+      <td>Diastolic blood pressure</td>
+      <td>Continuous</td>
+    </tr>
+    <tr>
+      <td>Body Mass Index</td>
+      <td>Body Mass Index</td>
+      <td>Continuous</td>
+    </tr>
+    <tr>
+      <td>Heart Rate</td>
+      <td>
+        In medical research, variables such as heart rate, though in fact
+        discrete, yet are considered continuous because of a large number of
+        possible values
+      </td>
+      <td>Continuous</td>
+    </tr>
+    <tr>
+      <td>Glucose</td>
+      <td>Glucose level</td>
+      <td>Continuous</td>
+    </tr>
+    <tr>
+      <td>Ten Year CHD</td>
+      <td>"1"-Yes, "0"-No</td>
+      <td>Binary</td>
+    </tr>
+  </tbody>
+</table>
 
 1. Sex: male or female(Nominal)
 2. Age: Age of the patient;(Continuous - Although the recorded ages have been truncated to whole numbers, the concept of age is continuous)
@@ -110,7 +147,11 @@ Make sure you have the following installed:
 
 - Jupyter Notebook with Python-3 kernel
 - Required libraries (e.g. 'numpy', 'pandas', 'scikit-learn', 'seaborn', 'matplotlib', 'xgboost')
+
 # HD-Prediction-App
+
 # HD-Prediction-App
+
 # HD-Prediction-App
+
 # HD-Prediction-App
