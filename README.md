@@ -127,24 +127,8 @@ The dataset is publically available on the Kaggle website, and it is from an ong
 
 ## Data Preprocssing
 
-<title>Code Example</title>
-<style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-    code {
-      font-family: "Courier New", Courier, monospace;
-      color: #d63384; /* Optional: color to make the code stand out */
-    }
-</style>
+Code Example:
+
 <body>
     <p>Python Code</p>
     <pre>
