@@ -3,15 +3,15 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Previous Work](#previous-work)
-3. [Methodology](#methodology)
+2. [About the data source](#about-the-data-source)
+3. [Data matrics](#data-matrics)
    - [Dataset](#dataset)
    - [Computational Resources and Tools Used](#computational-resources-and-tools-used)
    - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
    - [Data Transformation for Modeling](#data-transformation-for-modeling)
 4. [Classification Modeling](#classification-modeling)
 
-## Abstract
+## Introduction
 
 About heart disease...
 
@@ -19,7 +19,7 @@ About heart disease...
 
 The dataset is publically available on the Kaggle website, and it is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. The classification goal is to predict whether the patient has a 10-year risk of future coronary heart disease (CHD). The dataset provides the patients’ information. It includes over 4,000 records and 15 attributes.
 
-## Data matrics as pandas frame and meaning :
+## Data matrics
 
 <table>
   <caption>
@@ -120,38 +120,44 @@ The dataset is publically available on the Kaggle website, and it is from an ong
   </tbody>
 </table>
 
-1. Sex: male or female(Nominal)
-2. Age: Age of the patient;(Continuous - Although the recorded ages have been truncated to whole numbers, the concept of age is continuous)
-   Behavioral
-3. Education: 0: Less than High School and High School degrees, 1: College Degree and Higher
-4. Current Smoker: whether or not the patient is a current smoker (Nominal)
-5. Cigs Per Day: the number of cigarettes that the person smoked on average in one day. (can be considered continuous as one can have any number of cigarettes, even half a cigarette.)
-   Medical( history)
-6. BP Meds: whether or not the patient was on blood pressure medication (Nominal)
-7. Prevalent Stroke: whether or not the patient had previously had a stroke (Nominal)
-8. Prevalent Hyp: whether or not the patient was hypertensive (Nominal)
-9. Diabetes: whether or not the patient had diabetes (Nominal)
-   Medical(current)
-10. Tot Chol: total cholesterol level (Continuous)
-11. Sys BP: systolic blood pressure (Continuous)
-12. Dia BP: diastolic blood pressure (Continuous)
-13. BMI: Body Mass Index (Continuous)
-14. Heart Rate: heart rate (Continuous - In medical research, variables such as heart rate though in fact discrete, yet are considered continuous because of large number of possible values.)
-15. Glucose: glucose level (Continuous)
-    Predict variable (desired target)
-16. 10 year risk of coronary heart disease CHD (binary: “1”, means “Yes”, “0” means “No”)
-
 ## Prerequisites
-
-Make sure you have the following installed:
 
 - Jupyter Notebook with Python-3 kernel
 - Required libraries (e.g. 'numpy', 'pandas', 'scikit-learn', 'seaborn', 'matplotlib', 'xgboost')
 
-# HD-Prediction-App
+## Data Preprocssing
 
-# HD-Prediction-App
-
-# HD-Prediction-App
-
-# HD-Prediction-App
+<title>Code Example</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: "Courier New", Courier, monospace;
+      color: #d63384; /* Optional: color to make the code stand out */
+    }
+</style>
+<body>
+    <p>Python Code</p>
+    <pre>
+    <code>
+    import pandas as pd
+    import numpy as np
+    file_path = '/Users/z5601757/Documents/AriaResearch/Project/Dataset/DatasetToProcess/Framingham_CHD_preprocessed_data.csv'
+    try:
+        raw_framingham_data = pd.read_csv(file_path)
+        column_headers = raw_framingham_data.columns.to_list()
+        print(column_headers)
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    </code>
+    </pre>
+</body>
