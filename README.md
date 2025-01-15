@@ -33,8 +33,6 @@ https://www.who.int/en/news-room/fact-sheets/detail/cardiovascular-diseases-(cvd
 RangeIndex: 920 entries, 0 to 919
 Data columns (total 16 columns):
 
-# Column Non-Null Count Dtype
-
 ---
 
 0 id 920 non-null int64  
@@ -67,6 +65,119 @@ memory usage: 115.1+ KB
 - Source: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
 
 ### Heart Disease Combined Data Matrics
+
+<table>
+  <caption>
+    Dataset Columns and Data Types
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Row</th>
+      <th scope="col">Column</th>
+      <th scope="col">Description</th>
+      <th scope="col">Data Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>id</td>
+      <td>Unique id for each patient</td>
+      <td>int64</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>age</td>
+      <td>Age in years</td>
+      <td>int64</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>sex</td>
+      <td>gender(1 = male; 0 = female)</td>
+      <td>binary</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>dataset</td>
+      <td>Source</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>cp</td>
+      <td>Chest pain type -> 1: typical angina, 2: atypical angina, 3: non-anginal pain, 4: asymptomatic</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>trestbps</td>
+      <td>Resting blood pressure (in mm Hg on admission to the hospital)</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>chol</td>
+      <td>Serum cholesterol in mg/dl</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>fbs</td>
+      <td>Fasting blood sugar > 120 mg/dl (1 = true; 0 = false)</td>
+      <td>binary</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>restecg</td>
+      <td>Resting electrocardiographic results -> 0: normal, 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 005 mV), 2: showing probable or definite left ventricular hypertropy by Estes criteria</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>thalch</td>
+      <td>maximum heart rate achieved in beats per minute (bpm)</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>exang</td>
+      <td>Exercise induced angina (1 = yes; 0 = no)</td>
+      <td>binary</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>oldpeak</td>
+      <td>ST depression induced by exercise relative to rest</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>slope</td>
+      <td>The slope of the peak exercise ST segment->1: upsloping, 2: flat, 3: down-sloping</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>ca</td>
+      <td>number of major vessels (0-3) colored by fluoroscopy</td>
+      <td>float64</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>thal</td>
+      <td>3 = normal; 6 = fixed defect; 7 = reversible defect</td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>num</td>
+      <td>Result: The predicted attributeThe predicted attribute</td>
+      <td>int64</td>
+    </tr>
+  </tbody>
+</table>
+Result Values 1-4: These values represent different degrees of heart disease severity or different types of heart conditions. The exact meaning of each value can vary depending on how the dataset was collected and annotated. However, generally, higher values indicate a higher severity of heart disease or the presence of specific cardiac conditions.
 
 ### Framingham Data Matrics
 
@@ -176,34 +287,10 @@ memory usage: 115.1+ KB
 
 ## Data Preprocssing
 
-Code Example:
-
-<body>
-    <p>Python Code</p>
-    <pre>
-    <code>
-    import pandas as pd
-    import numpy as np
-    file_path = '/Users/z5601757/Documents/AriaResearch/Project/Dataset/DatasetToProcess/Framingham_CHD_preprocessed_data.csv'
-    try:
-        raw_framingham_data = pd.read_csv(file_path)
-        column_headers = raw_framingham_data.columns.to_list()
-        print(column_headers)
-    except Exception as e:
-        print(f"An error occurred: {e}")
-    df = raw_framingham_data.copy()
-
-    </code>
-    </pre>
-
-</body>
-
 ['male', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose', 'TenYearCHD']
 class: 'pandas.core.frame.DataFrame'
-RangeIndex: 4133 entries, 0 to 4132
+Range Index: 4133 entries, 0 to 4132
 Data columns (total 16 columns):
-
-# Column Non-Null Count Dtype
 
 ---
 
