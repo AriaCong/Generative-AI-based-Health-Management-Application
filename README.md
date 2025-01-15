@@ -14,6 +14,7 @@
 ## Introduction
 
 About heart disease...
+https://www.who.int/en/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)
 
 ## About the data source
 
@@ -142,6 +143,89 @@ Code Example:
         print(column_headers)
     except Exception as e:
         print(f"An error occurred: {e}")
+    df = raw_framingham_data.copy()
+
     </code>
     </pre>
+
+</body>
+
+['male', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose', 'TenYearCHD']
+class: 'pandas.core.frame.DataFrame'
+RangeIndex: 4133 entries, 0 to 4132
+Data columns (total 16 columns):
+
+# Column Non-Null Count Dtype
+
+---
+
+0 male 4133 non-null int64  
+ 1 age 4133 non-null int64  
+ 2 education 4133 non-null int64  
+ 3 currentSmoker 4133 non-null int64  
+ 4 cigsPerDay 4133 non-null float64
+5 BPMeds 4133 non-null float64
+6 prevalentStroke 4133 non-null int64  
+ 7 prevalentHyp 4133 non-null int64  
+ 8 diabetes 4133 non-null int64  
+ 9 totChol 4133 non-null float64
+10 sysBP 4133 non-null float64
+11 diaBP 4133 non-null float64
+12 BMI 4133 non-null float64
+13 heartRate 4133 non-null float64
+14 glucose 4133 non-null float64
+15 TenYearCHD 4133 non-null int64  
+dtypes: float64(8), int64(8)
+memory usage: 516.8 KB
+
+![alt text](<images/Framingham preview.png>)
+
+male 0
+age 0
+education 105
+currentSmoker 0
+cigsPerDay 29
+BPMeds 53
+prevalentStroke 0
+prevalentHyp 0
+diabetes 0
+totChol 50
+sysBP 0
+diaBP 0
+BMI 19
+heartRate 1
+glucose 388
+TenYearCHD 0
+dtype: int64
+
+Clean up missing values or out of range values
+Ref: https://www.kaggle.com/code/captainozlem/framingham-chd-preprossing-data/notebook
+
+### Data conversion
+
+<body>
+    <p>Python Code</p>
+    <pre>
+    <code>
+        import pandas as pd
+
+        # File paths
+        input_file = '/Users/z5601757/Documents/AriaResearch/Project/Dataset/heartDisease/reprocessed.hungarian.data'  # Replace with the path to your .data file
+        output_file = '/Users/z5601757/Documents/AriaResearch/Project/Dataset/new.csv'  # Replace with your desired .csv file path
+
+        # Step 1: Load the .data file
+        # Assuming the .data file is comma-separated
+        df = pd.read_csv(input_file, header=None)   # Use `header=None` if there's no header row
+
+        # Step 2: Add column names (optional)
+        # Replace ['col1', 'col2', ...] with appropriate column names
+        # df.columns = ['col1', 'col2', 'col3', 'col4']
+
+        # Step 3: Save as .csv
+        df.to_csv(output_file, index=False)
+        print(f"File converted and saved to {output_file}")
+        print(df.head(10))
+    </code>
+    </pre>
+
 </body>
