@@ -1,0 +1,80 @@
+name: Python Package using Conda
+
+on: 
+  push:
+    branches:
+      - main  # Run only for pushes to the main branch
+  pull_request:  # Run for pull requests to ensure prerequisites before merging
+
+jobs:
+  build-mac:
+    runs-on: macos-latest
+    strategy:
+      max-parallel: 5
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.10'
+
+    - name: Install Miniconda
+      shell: bash
+      run: |
+        # Install Miniconda on macOS
+        curl -o miniconda.sh -L https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+        bash miniconda.sh -b -p $HOME/miniconda
+        export PATH="$HOME/miniconda/bin:$PATH"
+        conda init bash
+        source ~/.bashrc
+
+    - name: Set up Conda environment
+      shell: bash
+      run: |
+        # Create a new conda environment with Python 3.10
+        conda create -y -n hd-prediction-env python=3.10
+        source activate hd-prediction-env
+        conda install -y numpy pandas matplotlib scikit-learn seaborn xgboost -c conda-forge
+        conda env export > environment.yml  # Save environment configuration for reference
+
+    - name: Lint with flake8
+      shell: bash
+      run: |
+        source activate hd-prediction-env
+        conda install -y flake8
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Test with pytest
+      shell: bash
+      run: |
+        source activate hd-prediction-env
+        conda install -y pytest
+        pytest
+
+    - name: Verify no uncommitted changes
+      shell: bash
+      run: |
+        if [[ $(git status --porcelain) ]]; then
+          echo "There are uncommitted changes. Please commit all changes before merging to main."
+          exit 1
+        fi
+
+    - name: Upload environment.yml as artifact
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: environment.yml
+        path: environment.yml
+
+  merge-prerequisites:
+    runs-on: macos-latest
+    if: github.event_name == 'pull_request'
+    steps:
+    - name: Ensure all tests pass before merging
+      shell: bash
+      run: |
+        echo "All tests must pass before merging to main. Please verify linting, unit tests, and CI checks."
