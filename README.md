@@ -1,10 +1,12 @@
-# Heart Disease Detection Using Framingham Cardiovascular Disease Dataset
+# Cardiovascular Datasets for Disease Prediction
 
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Avaliable data source](#about-the-data-source)
-   - [heart_disease_combined_data](#)
+2. [Available Data Sources](#about-the-data-source)
+   - [heart_disease_combined_data](#heart_disease_combined_data)
+   - [framingham_lifestyle_dataset](#framingham_lifestyle_dataset)
+   - [healthcare_stroke_dataset](#healthcare_stroke_dataset)
 3. [Data matrics](#)
    - [Dataset](#dataset)
    - [Computational Resources and Tools Used](#computational-resources-and-tools-used)
@@ -14,57 +16,59 @@
 
 ## Introduction
 
-About heart disease...
+Cardiovascular diseases (CVDs) are the leading cause of death globally, as stated by the World Health Organization (WHO). Early detection and intervention can significantly improve patient outcomes. This project focuses on utilizing machine learning techniques to predict heart disease using publicly available datasets.
 https://www.who.int/en/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)
+https://www.cdc.gov/heart-disease/data-research/facts-stats/index.html
 
-## Avaliable data source
+1. Age alone doesn’t cause coronary artery disease, but the older you get and the longer you’ve been exposed to the effects of risks such as high blood pressure or an unhealthy lifestyle, the greater your overall risk.
+2. Blood pressure is the force blood exerts on artery walls. When your reading is consistently above 140/90, you have a condition called hypertension, or high blood pressure. The stress that higher blood pressure places on one’s arteries and heart makes a heart attack or stroke more likely.
+3. High blood cholesterol is defined as having too much cholesterol—a waxy, fatty substance—in the blood. Having either high LDL cholesterol (“bad” cholesterol) or low HDL cholesterol (“good” cholesterol)—or both—is one of the best predictors of your risk of heart disease. A blood lipid profile measures both your cholesterol numbers and your triglycerides, another type of fat in the blood that is a risk factor.
+4. High blood sugar increases plaque buildup, which causes artery damage that leads to heart disease. Diabetics have double the risk of coronary heart disease. In fact, most people with type 2 diabetes eventually develop heart disease.
+5. Smoking, excess weight, and other bad lifestyles
 
-1. heart_disease_combined_data.csv
+## Available Data Sources
 
-- A dataset contains 4 databases: Cleveland, Hungary, Switzerland, and the VA Long Beach
-- This database contains 76 attributes, but all published experiments refer to using a subset of 14 of them. In particular, the Cleveland database is the only one that has been used by ML researchers to date. The "goal" field refers to the presence of heart disease in the patient. It is integer valued from 0 (no presence) to 4. Experiments with the Cleveland database have concentrated on simply attempting to distinguish presence (values 1,2,3,4) from absence (value 0).
-- The names and social security numbers of the patients were recently removed from the database, replaced with dummy values. One file has been "processed", that one containing the Cleveland database. All four unprocessed files also exist in this directory.
-- Contains missing values
-- Source: https://archive.ics.uci.edu/dataset/45/heart+disease
+### heart_disease_combined_data
 
-['id', 'age', 'sex', 'dataset', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalch', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'num']
-14 features excluding unique id and the last column as result
+The Cleveland Heart Disease dataset, available in the UCI Machine Learning Repository, was used for this research. The dataset consists of 76 attributes, but we focused on a subset of 13 features used in previous studies. These features include age, sex, chest pain type (cp), resting blood pressure (trestbps), serum cholesterol (chol), fasting blood sugar (fbs), maximum heart rate achieved (thalach), exercise-induced angina (exang), ST depression (oldpeak), slope of the peak exercise (slope), number of major vessels (ca), and types of defect (thal). The target variable, `disease_present`, was mapped to binary values indicating the absence or presence of heart disease.
 
-RangeIndex: 920 entries, 0 to 919
-Data columns (total 16 columns):
+<li> Description: This dataset combines information from four databases: Cleveland, Hungary, Switzerland, and the VA Long Beach. It contains 76 attributes, but researchers typically use a subset of 14 attributes.</li>
+<li> Target Variable: The presence of heart disease, represented as an integer value (0 = no disease, 1-4 = varying degrees of disease severity).</li>
+<li> Source: https://archive.ics.uci.edu/dataset/45/heart+disease</li>
+<li> Key Notes:
+1. Missing values are present.
+2. The Cleveland database is the most commonly used subset for machine learning research.
+</li>
+The "goal" field refers to the presence of heart disease in the patient. It is integer valued from 0 (no presence) to 4. Experiments with the Cleveland database have concentrated on simply attempting to distinguish presence (values 1,2,3,4) from absence (value 0).
+The names and social security numbers of the patients were recently removed from the database, replaced with dummy values. One file has been "processed", that one containing the Cleveland database. All four unprocessed files also exist in this directory.
 
----
+### framingham_lifestyle_dataset
 
-0 id 920 non-null int64  
- 1 age 920 non-null int64  
- 2 sex 920 non-null object
-3 dataset 920 non-null object
-4 cp 920 non-null object
-5 trestbps 861 non-null float64
-6 chol 890 non-null float64
-7 fbs 830 non-null object
-8 restecg 918 non-null object
-9 thalch 865 non-null float64
-10 exang 865 non-null object
-11 oldpeak 858 non-null float64
-12 slope 611 non-null object
-13 ca 309 non-null float64
-14 thal 434 non-null object
-15 num 920 non-null int64  
-dtypes: float64(5), int64(3), object(8)
-memory usage: 115.1+ KB
+<li> Description: This dataset stems from an ongoing cardiovascular study in Framingham, Massachusetts, aimed at predicting a 10-year risk of coronary heart disease (CHD).</li>
+<li> Target Variable: Binary (1 = risk of CHD, 0 = no risk).</li>
+<li> Source: Kaggle Dataset
+<li> Key Notes:
+Contains missing and invalid data.
+Features include age, gender, smoking status, blood pressure, cholesterol levels, diabetes, and more.</li>
+<li> Source: https://www.kaggle.com/code/captainozlem/framingham-chd-preprossing-data/notebook</li>
 
-2. Framingham Lifestyle Dataset:
+The dataset is publically available on the Kaggle website, and it is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. The classification goal is to predict whether the patient has a 10-year risk of future coronary heart disease (CHD). The dataset provides the patients’ information. It includes over 4,000 records and 15 attributes.
 
-- The dataset is publically available on the Kaggle website, and it is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. The classification goal is to predict whether the patient has a 10-year risk of future coronary heart disease (CHD). The dataset provides the patients’ information. It includes over 4,000 records and 15 attributes.
-- Contains missing and invalid data -> data preprocessing done
-- Source: https://www.kaggle.com/code/captainozlem/framingham-chd-preprossing-data/notebook
+### healthcare_stroke_dataset
 
-3. Healthcare Stroke dataset:
+<li> Description: This dataset provides information on stroke risk factors and outcomes.</li>
+<li> Target Variable: Binary (1 = stroke, 0 = no stroke)..</li>
+<i> Source: Kaggle Dataset
+<li> Key Notes:
+Contains missing and invalid data.
+Features include age, gender, smoking status, blood pressure, cholesterol levels, diabetes, and more.</li>
+<li> Source: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset</li>
 
-- Source: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
+## Dataset Overview
 
-### Heart Disease Combined Data Matrics
+### heart_disease_combined_data
+
+Heart Disease Combined Data Metrics
 
 <table>
   <caption>
@@ -178,8 +182,17 @@ memory usage: 115.1+ KB
   </tbody>
 </table>
 Result Values 1-4: These values represent different degrees of heart disease severity or different types of heart conditions. The exact meaning of each value can vary depending on how the dataset was collected and annotated. However, generally, higher values indicate a higher severity of heart disease or the presence of specific cardiac conditions.
+<hr />
+<li> RangeIndex: 920 entries, 0 to 919 </li>
+<li> Data columns (total 16 columns): 
+   14 features excluding unique id and the last column as result </li>
+</i> ['id', 'age', 'sex', 'dataset', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalch', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'num'] </li>
+   dtypes: float64(5), int64(3), object(8)
+<li> memory usage: 115.1+ KB </li>
 
-### Framingham Data Matrics
+### framingham_lifestyle_dataset
+
+Framingham Dataset Metrics
 
 <table>
   <caption>
@@ -280,41 +293,17 @@ Result Values 1-4: These values represent different degrees of heart disease sev
   </tbody>
 </table>
 
-## Prerequisites
-
-- Jupyter Notebook with Python-3 kernel
-- Required libraries (e.g. 'numpy', 'pandas', 'scikit-learn', 'seaborn', 'matplotlib', 'xgboost')
-
-## Data Preprocssing
-
-['male', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose', 'TenYearCHD']
-class: 'pandas.core.frame.DataFrame'
-Range Index: 4133 entries, 0 to 4132
-Data columns (total 16 columns):
-
----
-
-0 male 4133 non-null int64  
- 1 age 4133 non-null int64  
- 2 education 4133 non-null int64  
- 3 currentSmoker 4133 non-null int64  
- 4 cigsPerDay 4133 non-null float64
-5 BPMeds 4133 non-null float64
-6 prevalentStroke 4133 non-null int64  
- 7 prevalentHyp 4133 non-null int64  
- 8 diabetes 4133 non-null int64  
- 9 totChol 4133 non-null float64
-10 sysBP 4133 non-null float64
-11 diaBP 4133 non-null float64
-12 BMI 4133 non-null float64
-13 heartRate 4133 non-null float64
-14 glucose 4133 non-null float64
-15 TenYearCHD 4133 non-null int64  
-dtypes: float64(8), int64(8)
-memory usage: 516.8 KB
+<hr />
+<li> Range Index: 4133 entries, 0 to 4132 </li>
+<li> Data columns (total 16 columns):
+['male', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose', 'TenYearCHD'] </li>
+<li> 15 features in total, and last column is result </li>
+<li> dtypes: float64(8), int64(8)
+memory usage: 516.8 KB </li>
 
 ![alt text](<images/Framingham preview.png>)
 
+Missing values:
 male 0
 age 0
 education 105
@@ -333,11 +322,17 @@ glucose 388
 TenYearCHD 0
 dtype: int64
 
+### Healthcare Stroke dataset:
+
+## Prerequisites
+
+- Jupyter Notebook with Python-3 kernel, current env -> python version 3.10.16
+- Required libraries (e.g. 'numpy', 'pandas', 'scikit-learn', 'seaborn', 'matplotlib', 'xgboost') check package version: conda list numpy
+- env name: conda env vscode_env
+
+## Data Preprocssing
+
 ## Methodology
-
-### Dataset
-
-The Cleveland Heart Disease dataset, available in the UCI Machine Learning Repository, was used for this research. The dataset consists of 76 attributes, but we focused on a subset of 13 features used in previous studies. These features include age, sex, chest pain type (cp), resting blood pressure (trestbps), serum cholesterol (chol), fasting blood sugar (fbs), maximum heart rate achieved (thalach), exercise-induced angina (exang), ST depression (oldpeak), slope of the peak exercise (slope), number of major vessels (ca), and types of defect (thal). The target variable, `disease_present`, was mapped to binary values indicating the absence or presence of heart disease.
 
 ### Computational Resources and Tools Used
 
@@ -389,10 +384,3 @@ Support Vector Machine (SVM) emerged as the most accurate model for detecting he
 4. Ayatollahi, H., Gholamhosseini, L., & Salehi, M. (2019). Predicting coronary artery disease: A comparison between two data mining algorithms. BMC Public Health, 19(1), 448–448. [DOI](https://doi.org/10.1186/s12889-019-6721-5)
 5. Nashif, S., Raihan, M.R., Islam, M.R., & Imam, M.H. (2018). Heart Disease Detection by Using Machine Learning Algorithms and a Real-Time Cardiovascular Health Monitoring System. World Journal of Engineering and Technology, 6, 854-873. [Link](https://www.scirp.org/journal/paperinformation.aspx?paperid=88650)
 6. Liu, X., Wang, X., Su, Q., Zhang, M., Zhu, Y., Wang, Q., & Wang, Q. (2017). A Hybrid Classification System for Heart Disease Diagnosis Based on the RFRS Method. Computational and Mathematical Methods in Medicine, 2017, 8272091–11. [DOI](https://doi.org/10.1155/2017/8272091)
-
-python version 3.10.16
-conda env vscode_env
-
-conda create --name vscode_env python=3.10
-conda install jupyter numpy pandas
-conda list numpy
