@@ -3,8 +3,9 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [About the data source](#about-the-data-source)
-3. [Data matrics](#data-matrics)
+2. [Avaliable data source](#about-the-data-source)
+   - [heart_disease_combined_data](#)
+3. [Data matrics](#)
    - [Dataset](#dataset)
    - [Computational Resources and Tools Used](#computational-resources-and-tools-used)
    - [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
@@ -16,11 +17,58 @@
 About heart disease...
 https://www.who.int/en/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)
 
-## About the data source
+## Avaliable data source
 
-The dataset is publically available on the Kaggle website, and it is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. The classification goal is to predict whether the patient has a 10-year risk of future coronary heart disease (CHD). The dataset provides the patients’ information. It includes over 4,000 records and 15 attributes.
+1. heart_disease_combined_data.csv
 
-## Data matrics
+- A dataset contains 4 databases: Cleveland, Hungary, Switzerland, and the VA Long Beach
+- This database contains 76 attributes, but all published experiments refer to using a subset of 14 of them. In particular, the Cleveland database is the only one that has been used by ML researchers to date. The "goal" field refers to the presence of heart disease in the patient. It is integer valued from 0 (no presence) to 4. Experiments with the Cleveland database have concentrated on simply attempting to distinguish presence (values 1,2,3,4) from absence (value 0).
+- The names and social security numbers of the patients were recently removed from the database, replaced with dummy values. One file has been "processed", that one containing the Cleveland database. All four unprocessed files also exist in this directory.
+- Contains missing values
+- Source: https://archive.ics.uci.edu/dataset/45/heart+disease
+
+['id', 'age', 'sex', 'dataset', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalch', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'num']
+14 features excluding unique id and the last column as result
+
+RangeIndex: 920 entries, 0 to 919
+Data columns (total 16 columns):
+
+# Column Non-Null Count Dtype
+
+---
+
+0 id 920 non-null int64  
+ 1 age 920 non-null int64  
+ 2 sex 920 non-null object
+3 dataset 920 non-null object
+4 cp 920 non-null object
+5 trestbps 861 non-null float64
+6 chol 890 non-null float64
+7 fbs 830 non-null object
+8 restecg 918 non-null object
+9 thalch 865 non-null float64
+10 exang 865 non-null object
+11 oldpeak 858 non-null float64
+12 slope 611 non-null object
+13 ca 309 non-null float64
+14 thal 434 non-null object
+15 num 920 non-null int64  
+dtypes: float64(5), int64(3), object(8)
+memory usage: 115.1+ KB
+
+2. Framingham Lifestyle Dataset:
+
+- The dataset is publically available on the Kaggle website, and it is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. The classification goal is to predict whether the patient has a 10-year risk of future coronary heart disease (CHD). The dataset provides the patients’ information. It includes over 4,000 records and 15 attributes.
+- Contains missing and invalid data -> data preprocessing done
+- Source: https://www.kaggle.com/code/captainozlem/framingham-chd-preprossing-data/notebook
+
+3. Healthcare Stroke dataset:
+
+- Source: https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset
+
+### Heart Disease Combined Data Matrics
+
+### Framingham Data Matrics
 
 <table>
   <caption>
@@ -198,34 +246,66 @@ glucose 388
 TenYearCHD 0
 dtype: int64
 
-Clean up missing values or out of range values
-Ref: https://www.kaggle.com/code/captainozlem/framingham-chd-preprossing-data/notebook
+## Methodology
 
-### Data conversion
+### Dataset
 
-<body>
-    <p>Python Code</p>
-    <pre>
-    <code>
-        import pandas as pd
+The Cleveland Heart Disease dataset, available in the UCI Machine Learning Repository, was used for this research. The dataset consists of 76 attributes, but we focused on a subset of 13 features used in previous studies. These features include age, sex, chest pain type (cp), resting blood pressure (trestbps), serum cholesterol (chol), fasting blood sugar (fbs), maximum heart rate achieved (thalach), exercise-induced angina (exang), ST depression (oldpeak), slope of the peak exercise (slope), number of major vessels (ca), and types of defect (thal). The target variable, `disease_present`, was mapped to binary values indicating the absence or presence of heart disease.
 
-        # File paths
-        input_file = '/Users/z5601757/Documents/AriaResearch/Project/Dataset/heartDisease/reprocessed.hungarian.data'  # Replace with the path to your .data file
-        output_file = '/Users/z5601757/Documents/AriaResearch/Project/Dataset/new.csv'  # Replace with your desired .csv file path
+### Computational Resources and Tools Used
 
-        # Step 1: Load the .data file
-        # Assuming the .data file is comma-separated
-        df = pd.read_csv(input_file, header=None)   # Use `header=None` if there's no header row
+The project was implemented using Python within a Jupyter Notebook environment, utilizing essential libraries such as Matplotlib, Seaborn, Scikit-learn, NumPy, and Pandas. No extra computational resources were required beyond standard CPU cores.
 
-        # Step 2: Add column names (optional)
-        # Replace ['col1', 'col2', ...] with appropriate column names
-        # df.columns = ['col1', 'col2', 'col3', 'col4']
+### Exploratory Data Analysis (EDA)
 
-        # Step 3: Save as .csv
-        df.to_csv(output_file, index=False)
-        print(f"File converted and saved to {output_file}")
-        print(df.head(10))
-    </code>
-    </pre>
+The project commenced with loading and understanding the dataset. Missing values were handled appropriately, and features were visualized using bar charts, box plots, violin plots, and pair plots to uncover complex patterns and relationships within the data.
 
-</body>
+### Data Transformation for Modeling
+
+Categorical features were label encoded using Scikit-learn's `LabelEncoder`. Features like 'cp', 'restecg', 'slope', 'thal', 'fbs', and 'exang' were converted into numerical representations, ensuring they were appropriately represented for machine learning models.
+
+## Classification Modeling
+
+For predicting heart disease, three machine learning models were used: Logistic Regression, XGBoost, and Support Vector Machine (SVM). Each model was trained and evaluated on the dataset. The data was split into training and testing sets, with standard scaling applied for uniformity across features.
+
+### XGBoost
+
+XGBoost is a scalable and distributed gradient-boosted decision tree (GBDT) machine learning framework. We used the `XGBClassifier` for binary classification with default parameters and trained it on the heart disease dataset.
+
+### SVM
+
+Support Vector Machine (SVM) is a supervised learning algorithm suitable for classification tasks. The SVM model was trained using an RBF kernel with default parameters.
+
+### Logistic Regression
+
+Logistic Regression is a statistical method used for binary classification problems. The model was trained with default parameters, utilizing predictor variables such as age, cholesterol levels, exercise habits, and chest pain type.
+
+## Results
+
+The models were evaluated using metrics such as accuracy, precision, recall, and F1 score. SVM demonstrated the highest accuracy at 80%, followed by XGBoost at 78%, and Logistic Regression at 77%. SVM's higher recall (83%) suggests its effectiveness in capturing individuals with heart disease. Precision was consistent across models at 84%, resulting in fewer false positives. The F1 score for SVM was 84%, indicating a good balance between capturing disease cases and minimizing false positives.
+
+| Model               | Accuracy | Precision | Recall | F1 Score |
+| ------------------- | -------- | --------- | ------ | -------- |
+| Logistic Regression | 77%      | 84%       | 78%    | 81%      |
+| XGBoost             | 78%      | 84%       | 78%    | 81%      |
+| SVM                 | 80%      | 84%       | 83%    | 84%      |
+
+## Conclusion
+
+Support Vector Machine (SVM) emerged as the most accurate model for detecting heart disease, showcasing superior performance in metrics such as recall and F1 score. While XGBoost and Logistic Regression also demonstrated competitive performance, SVM's precision and recall make it a robust choice for early and accurate heart disease detection. Future work could involve fine-tuning the parameters and exploring other classification techniques to further enhance model performance.
+
+## References
+
+1. Pavlova, A. I. (2023). Application of Machine Learning Algorithms for Heart Disease Prediction. Siberian Journal of Life Sciences and Agriculture, 15(3), 475-496. [DOI](https://doi.org/10.12731/2658-6649-2023-15-3-475-496)
+2. Ramakrishnan, S., & Mahesh, B. (2023). Heart Disease Prediction Using Machine Learning. International Journal of Engineering Technology and Management Sciences, 7(6). [DOI](https://doi.org/10.46647/ijetms.2023.v07i06.027)
+3. Detrano, R., Janosi, A., Steinbrunn, W., Pfisterer, M., Schmid, J.-J., Sandhu, S., Guppy, K. H., Lee, S., & Froelicher, V. (1989). International application of a new probability algorithm for the diagnosis of coronary artery disease. The American Journal of Cardiology, 64(5), 304–310. [DOI](<https://doi.org/10.1016/0002-9149(89)90524-9>)
+4. Ayatollahi, H., Gholamhosseini, L., & Salehi, M. (2019). Predicting coronary artery disease: A comparison between two data mining algorithms. BMC Public Health, 19(1), 448–448. [DOI](https://doi.org/10.1186/s12889-019-6721-5)
+5. Nashif, S., Raihan, M.R., Islam, M.R., & Imam, M.H. (2018). Heart Disease Detection by Using Machine Learning Algorithms and a Real-Time Cardiovascular Health Monitoring System. World Journal of Engineering and Technology, 6, 854-873. [Link](https://www.scirp.org/journal/paperinformation.aspx?paperid=88650)
+6. Liu, X., Wang, X., Su, Q., Zhang, M., Zhu, Y., Wang, Q., & Wang, Q. (2017). A Hybrid Classification System for Heart Disease Diagnosis Based on the RFRS Method. Computational and Mathematical Methods in Medicine, 2017, 8272091–11. [DOI](https://doi.org/10.1155/2017/8272091)
+
+python version 3.10.16
+conda env vscode_env
+
+conda create --name vscode_env python=3.10
+conda install jupyter numpy pandas
+conda list numpy
