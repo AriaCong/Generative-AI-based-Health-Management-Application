@@ -39,6 +39,7 @@ The Cleveland Heart Disease dataset, available in the UCI Machine Learning Repos
 1. Missing values are present.
 2. The Cleveland database is the most commonly used subset for machine learning research.
 </li>
+<hr />
 The "goal" field refers to the presence of heart disease in the patient. It is integer valued from 0 (no presence) to 4. Experiments with the Cleveland database have concentrated on simply attempting to distinguish presence (values 1,2,3,4) from absence (value 0).
 The names and social security numbers of the patients were recently removed from the database, replaced with dummy values. One file has been "processed", that one containing the Cleveland database. All four unprocessed files also exist in this directory.
 
@@ -51,14 +52,14 @@ The names and social security numbers of the patients were recently removed from
 Contains missing and invalid data.
 Features include age, gender, smoking status, blood pressure, cholesterol levels, diabetes, and more.</li>
 <li> Source: https://www.kaggle.com/code/captainozlem/framingham-chd-preprossing-data/notebook</li>
-
+<hr />
 The dataset is publically available on the Kaggle website, and it is from an ongoing cardiovascular study on residents of the town of Framingham, Massachusetts. The classification goal is to predict whether the patient has a 10-year risk of future coronary heart disease (CHD). The dataset provides the patients’ information. It includes over 4,000 records and 15 attributes.
 
 ### healthcare_stroke_dataset
 
 <li> Description: This dataset provides information on stroke risk factors and outcomes.</li>
 <li> Target Variable: Binary (1 = stroke, 0 = no stroke)..</li>
-<i> Source: Kaggle Dataset
+<li> Source: Kaggle Dataset
 <li> Key Notes:
 Contains missing and invalid data.
 Features include age, gender, smoking status, blood pressure, cholesterol levels, diabetes, and more.</li>
@@ -68,11 +69,9 @@ Features include age, gender, smoking status, blood pressure, cholesterol levels
 
 ### heart_disease_combined_data
 
-Heart Disease Combined Data Metrics
-
 <table>
   <caption>
-    Dataset Columns and Data Types
+    Heart Disease Combined Data Metrics
   </caption>
   <thead>
     <tr>
@@ -181,22 +180,22 @@ Heart Disease Combined Data Metrics
     </tr>
   </tbody>
 </table>
+<hr />
 Result Values 1-4: These values represent different degrees of heart disease severity or different types of heart conditions. The exact meaning of each value can vary depending on how the dataset was collected and annotated. However, generally, higher values indicate a higher severity of heart disease or the presence of specific cardiac conditions.
 <hr />
 <li> RangeIndex: 920 entries, 0 to 919 </li>
 <li> Data columns (total 16 columns): 
    14 features excluding unique id and the last column as result </li>
-</i> ['id', 'age', 'sex', 'dataset', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalch', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'num'] </li>
+<li> ['id', 'age', 'sex', 'dataset', 'cp', 'trestbps', 'chol', 'fbs', 'restecg', 'thalch', 'exang', 'oldpeak', 'slope', 'ca', 'thal', 'num'] </li>
    dtypes: float64(5), int64(3), object(8)
 <li> memory usage: 115.1+ KB </li>
 
 ### framingham_lifestyle_dataset
 
-Framingham Dataset Metrics
-
 <table>
   <caption>
-    Framingham CHD Data matrics as pandas frame and meaning
+    Framingham Dataset Metrics
+
   </caption>
   <thead>
     <tr>
@@ -298,29 +297,10 @@ Framingham Dataset Metrics
 <li> Data columns (total 16 columns):
 ['male', 'age', 'education', 'currentSmoker', 'cigsPerDay', 'BPMeds', 'prevalentStroke', 'prevalentHyp', 'diabetes', 'totChol', 'sysBP', 'diaBP', 'BMI', 'heartRate', 'glucose', 'TenYearCHD'] </li>
 <li> 15 features in total, and last column is result </li>
-<li> dtypes: float64(8), int64(8)
-memory usage: 516.8 KB </li>
+<li> dtypes: float64(8), int64(8) </li>
+<li> memory usage: 516.8 KB </li>
 
 ![alt text](<images/Framingham preview.png>)
-
-Missing values:
-male 0
-age 0
-education 105
-currentSmoker 0
-cigsPerDay 29
-BPMeds 53
-prevalentStroke 0
-prevalentHyp 0
-diabetes 0
-totChol 50
-sysBP 0
-diaBP 0
-BMI 19
-heartRate 1
-glucose 388
-TenYearCHD 0
-dtype: int64
 
 ### Healthcare Stroke dataset:
 
